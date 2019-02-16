@@ -33,9 +33,7 @@ public class PortalAdministrativo implements Observador, ElementoVisor {
         System.out.println("NOTA VISTA COMO CATEDRÁTICO: ");
         for(Nota n : this.notas){
             System.out.println("Zona "+ n.getZona() + " final: " + n.getExamenFinal());
-        }
-        
-        
+        }                
     }
     
     

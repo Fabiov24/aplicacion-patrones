@@ -61,6 +61,7 @@ public class RegistroNotas implements Sujeto {
         nota.setCodigoEstudiante(n.getCodigoEstudiante());
         nota.setZona(n.getZona());
         nota.setExamenFinal(n.getExamenFinal());
+        nota.setEstado(n.getEstado());
         this.notas.add(nota);
                 
     }
