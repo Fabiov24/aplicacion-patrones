@@ -10,7 +10,7 @@ package observerPattern.Interfaces;
  * @author Fabio
  */
 public interface Sujeto {
-    public void registrarObservador();
-    public void eliminarObservador();
+    public void registrarObservador(Observador observer);
+    public void eliminarObservador(Observador observer);
     public void notificarObservador();
 }
