@@ -3,6 +3,7 @@ package observerPattern;
 import java.util.ArrayList;
 import observerPattern.Interfaces.Sujeto;
 import observerPattern.Interfaces.Observador;
+import statePattern.Nota;
 
 /**
  *
@@ -11,19 +12,21 @@ import observerPattern.Interfaces.Observador;
 public class RegistroNotas implements Sujeto {
     
     private ArrayList <Observador> observadores;
-    private String codigoCurso;
-    private String periodoLectivo;
-    private String anio;
-    private String codigoEstudiante;
-    private int zona;
-    private int examenFinal;
+    private ArrayList <Nota> notas;
     
     public RegistroNotas(){
-        observadores = new ArrayList<Observador>();
+        this.observadores = new ArrayList<Observador>();
+        this.notas = new ArrayList<Nota>();
     }
     
-    public void getNota(){
+    public void getNotasDeBaseDatos(){
+        
+        ArrayList<Nota> notasObtenidas = new ArrayList<Nota>();
         //Proceso de búsqueda de nota en la BD
+        for(Nota n : notasObtenidas){
+            this.setNota(n);
+        }
+        
     }
     
     
@@ -41,7 +44,7 @@ public class RegistroNotas implements Sujeto {
     
     public void notificarObservador(){
         for(Observador o : this.observadores){
-            o.actualizarInformacion(codigoCurso, periodoLectivo, anio, codigoEstudiante, zona, examenFinal);
+            o.actualizarInformacion(notas);
         }
     }
     
@@ -50,14 +53,15 @@ public class RegistroNotas implements Sujeto {
         notificarObservador();
     }
     
-    public void setNota(String codigoCurso,String periodoLectivo,String anio,
-            String codigoEstudiante,int zona,int examenFinal){
-        this.codigoCurso = codigoCurso;
-        this.periodoLectivo = periodoLectivo;
-        this.anio = anio;
-        this.codigoEstudiante = codigoEstudiante;
-        this.zona = zona;
-        this.examenFinal = examenFinal;
+    public void setNota(Nota n){
+        Nota nota = new Nota();
+        nota.setCodigoCurso(n.getCodigoCurso());
+        nota.setPeriodoLectivo(n.getPeriodoLectivo());
+        nota.setAnio(n.getAnio());
+        nota.setCodigoEstudiante(n.getCodigoEstudiante());
+        nota.setZona(n.getZona());
+        nota.setExamenFinal(n.getExamenFinal());
+        this.notas.add(nota);
                 
     }
 

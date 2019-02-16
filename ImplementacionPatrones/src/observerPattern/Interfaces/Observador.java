@@ -1,11 +1,13 @@
 
 package observerPattern.Interfaces;
 
+import java.util.ArrayList;
+import statePattern.Nota;
+
 /**
  *
  * @author Fabio
  */
 public interface Observador {
-    public void actualizarInformacion(String codigoCurso,String periodoLectivo,String anio, 
-            String codigoEstudiante,int Zona,int examenFinal);
+    public void actualizarInformacion(ArrayList<Nota> notas);
 }

@@ -1,9 +1,11 @@
 
 package observerPattern.Visores;
 
+import java.util.ArrayList;
 import observerPattern.Interfaces.ElementoVisor;
 import observerPattern.Interfaces.Observador;
 import observerPattern.Interfaces.Sujeto;
+import statePattern.Nota;
 
 /**
  *
@@ -11,12 +13,7 @@ import observerPattern.Interfaces.Sujeto;
  */
 public class PortalAdministrativo implements Observador, ElementoVisor {
 
-    private String codigoCurso;
-    private String periodoLectivo;
-    private String anio;
-    private String codigoEstudiante;
-    private int zona;
-    private int examenFinal;
+    private ArrayList <Nota> notas;
     private Sujeto RegistroNotas;
     
     public PortalAdministrativo(Sujeto registronotas){
@@ -24,21 +21,22 @@ public class PortalAdministrativo implements Observador, ElementoVisor {
         this.RegistroNotas.registrarObservador(this);
     }
     
-    
-    public void actualizarInformacion(String codigoCurso, String periodoLectivo, String anio, String codigoEstudiante, int Zona, int examenFinal) {
-        this.codigoCurso = codigoCurso;
-        this.periodoLectivo = periodoLectivo;
-        this.anio = anio;
-        this.codigoEstudiante = codigoEstudiante;
-        this.zona = zona;
-        this.examenFinal = examenFinal;
+    public void actualizarInformacion(ArrayList<Nota> notasObtenidas) {
+        //Se limpia las notas para poder mantener la inforamción actualizada al 100%
+        this.notas.clear();
+        for(Nota n : notasObtenidas){
+            this.notas.add(n);
+        }
     }
 
-    
     public void mostrarInformacion() {
-        System.out.println("NOTA VISTA COMO ADMINISTRADOR: ");
-        System.out.println("Zona "+ zona + " final: " + this.examenFinal);
+        System.out.println("NOTA VISTA COMO CATEDRÁTICO: ");
+        for(Nota n : this.notas){
+            System.out.println("Zona "+ n.getZona() + " final: " + n.getExamenFinal());
+        }
+        
         
     }
+    
     
 }
